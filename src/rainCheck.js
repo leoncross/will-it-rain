@@ -2,10 +2,13 @@ require('dotenv').config()
 var request = require('request');
 
 function RainCheck () {
+  this.location = ''
 }
 
 RainCheck.prototype.kelvinToCelsius = function (number) {
   return number - 273.15
 }
 
-module.exports = RainCheck
+RainCheck.prototype.saveLocation = function (location) {
+  this.location = location
+}

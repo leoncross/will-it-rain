@@ -14,5 +14,12 @@ describe('RainCheck', function () {
     })
   })
 
-  
+  describe('location', function () {
+    it('records location given', function () {
+      raincheck.saveLocation('london')
+      expect(raincheck.location).toEqual('london')
+    })
+  })
+
+
 })
