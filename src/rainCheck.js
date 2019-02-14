@@ -1,7 +1,5 @@
-require('dotenv').config()
-var request = require('request');
-
-function RainCheck () {
+function RainCheck (weatherAPI) {
+  this.weatherAPI = weatherAPI
   this.location = ''
 }
 
@@ -12,3 +10,9 @@ RainCheck.prototype.kelvinToCelsius = function (number) {
 RainCheck.prototype.saveLocation = function (location) {
   this.location = location
 }
+
+RainCheck.prototype.callAPI = function () {
+  return this.weatherAPI.callAPI(this.location)
+}
+
+module.exports = RainCheck

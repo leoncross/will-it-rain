@@ -1,10 +1,8 @@
 describe('RainCheck', function () {
 
-  var RainCheck = require('../src/rainCheck.js')
+  var OpenWeatherAPI = require('../src/openWeatherAPI.js')
 
-  var OpenWeatherAPIStub
-  var raincheck
-  var stub
+  var api
 
   var weatherSuccess = {
     "cod":"200",
@@ -56,38 +54,16 @@ describe('RainCheck', function () {
     "country":"GB",
     "population":1000000}}
 
-    var cityNotFound = {"cod":"404","message":"city not found"}
-    var inValidAPIKey = {"cod":401, "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."}
+  var cityNotFound = {"cod":"404","message":"city not found"}
+  var inValidAPIKey = {"cod":401, "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."}
 
   beforeEach(function() {
-
-    function OpenWeatherAPIStub () {}
-    OpenWeatherAPIStub.prototype = {
-      callAPI () {}
-    }
-
-    api = new OpenWeatherAPIStub
-    rainCheck = new RainCheck(api)
-
-  })
-
-  describe('#kelvinToCelsius', function () {
-    it('converts kelvin into a celsius', function () {
-      expect(rainCheck.kelvinToCelsius(282.15)).toEqual(9)
-    })
-  })
-
-  describe('#location', function () {
-    it('records location given', function () {
-      rainCheck.saveLocation('london')
-      expect(rainCheck.location).toEqual('london')
-    })
+    api = new OpenWeatherAPI
   })
 
   describe('#callAPI', function () {
-    it('calls the API and returns data successfully', function () {
-      spyOn(api, "callAPI").and.returnValue(weatherSuccess)
-      expect(rainCheck.callAPI()).toEqual(weatherSuccess)
-    })
+    // it('calls the API and returns data successfully', function () {
+    //   expect(api.callAPI('london')).toEqual('yedd')
+    // })
   })
 })
