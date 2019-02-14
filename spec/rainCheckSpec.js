@@ -62,7 +62,8 @@ describe('RainCheck', function () {
 
     function OpenWeatherAPIStub () {}
     OpenWeatherAPIStub.prototype = {
-      callAPI () {}
+      callAPI () {},
+      returnResult () {}
     }
 
     api = new OpenWeatherAPIStub
@@ -87,6 +88,14 @@ describe('RainCheck', function () {
     it('calls the API and returns data successfully', function () {
       spyOn(api, "callAPI").and.returnValue(weatherSuccess)
       expect(rainCheck.callAPI()).toEqual(weatherSuccess)
+    })
+  })
+
+  describe('#collectData', function () {
+    it('saves data in weatherData', function () {
+      spyOn(api, "returnResult").and.returnValue(weatherSuccess)
+      rainCheck.collectData()
+      expect(rainCheck.weatherData).toEqual(weatherSuccess)
     })
   })
 })
