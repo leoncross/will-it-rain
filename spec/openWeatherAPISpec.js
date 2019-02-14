@@ -59,11 +59,12 @@ describe('RainCheck', function () {
 
   beforeEach(function() {
     api = new OpenWeatherAPI
-  })
+	});
 
   describe('#callAPI', function () {
-    // it('calls the API and returns data successfully', function () {
-    //   expect(api.callAPI('london')).toEqual('yedd')
-    // })
+    it('calls the API and returns data successfully', function () {
+      spyOn(api, 'callAPI').and.returnValue(weatherSuccess);
+      expect(api.callAPI('london')).toEqual(weatherSuccess)
+    })
   })
 })

@@ -4,7 +4,6 @@ describe('RainCheck', function () {
 
   var OpenWeatherAPIStub
   var raincheck
-  var stub
 
   var weatherSuccess = {
     "cod":"200",

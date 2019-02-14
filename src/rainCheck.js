@@ -1,6 +1,7 @@
 function RainCheck (weatherAPI) {
   this.weatherAPI = weatherAPI
-  this.location = ''
+  this.location
+  this.weatherData
 }
 
 RainCheck.prototype.kelvinToCelsius = function (number) {
@@ -13,6 +14,10 @@ RainCheck.prototype.saveLocation = function (location) {
 
 RainCheck.prototype.callAPI = function () {
   return this.weatherAPI.callAPI(this.location)
+}
+
+RainCheck.prototype.collectData = function () {
+  this.weatherData = this.weatherAPI.returnResult()
 }
 
 module.exports = RainCheck
