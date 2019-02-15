@@ -55,6 +55,7 @@ describe('RainCheck', function () {
     "country":"GB",
     "population":1000000}}
 
+    var cleanedData = ['Clouds', 'Clouds', 'Clear']
     var cityNotFound = {"cod":"404","message":"city not found"}
     var inValidAPIKey = {"cod":401, "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."}
 
@@ -96,6 +97,30 @@ describe('RainCheck', function () {
       spyOn(api, "returnResult").and.returnValue(weatherSuccess)
       rainCheck.collectData()
       expect(rainCheck.weatherData).toEqual(weatherSuccess)
+    })
+  })
+
+  describe('#cleanData', function () {
+    it('returns an array with 3 weather types', function () {
+      spyOn(api, "returnResult").and.returnValue(weatherSuccess)
+      rainCheck.collectData()
+      rainCheck.cleanData()
+      expect(rainCheck.result).toEqual(cleanedData)
+    })
+  })
+
+  describe('#rainOrShine', function () {
+    it('returns 0 if no rain', function () {
+      rainCheck.result = ['Clouds', 'Clouds', 'Clear']
+      expect(rainCheck.rainOrShine()).toEqual(0)
+    })
+    it('returns 1 when one rain present', function () {
+      rainCheck.result = ['Clouds', 'Rain', 'Clear']
+      expect(rainCheck.rainOrShine()).toEqual(1)
+    })
+    it('returns 2 when two rain present', function () {
+      rainCheck.result = ['Clouds', 'Rain', 'Rain']
+      expect(rainCheck.rainOrShine()).toEqual(2)
     })
   })
 })

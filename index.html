@@ -4,10 +4,19 @@
     <meta charset="utf-8">
     <title>Will it rain?</title>
     <link rel="stylesheet" type="text/css" href="./static/stylesheets/style.css">
-    <script src="./src/openWeatherAPI.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <script src="bundle.js"></script>
+    <!-- <script src="./src/openWeatherAPI.js"></script>
     <script src="./src/rainCheck.js"></script>
+    <script src="./src/interface.js"></script> -->
+
   </head>
   <body>
+    <div id='main'></div>
+    <input id='box' type="text" name="fname"><br>
+    <button id='locationSearch'>search</button>
+    <button id='callAPI'>call API</button>
 
+    <div id='result'>windy</div>
   </body>
 </html>

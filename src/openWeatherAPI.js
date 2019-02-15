@@ -5,10 +5,10 @@ function OpenWeatherAPI () {
   this.result
 }
 
+
 OpenWeatherAPI.prototype.callAPI = function (location) {
   var self = this
-
-  fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + location + ',uk&APPID=' + process.env.API_Key)
+  fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + location + ',uk&APPID=' + process.env.API_KEY)
     .then(data => data.json())
     .then(data => {
       let promise = new Promise(function(resolve, reject) {
@@ -31,3 +31,5 @@ OpenWeatherAPI.prototype.returnResult = function () {
 }
 
 module.exports = OpenWeatherAPI
+
+console.log(process.env.API_KEY)
