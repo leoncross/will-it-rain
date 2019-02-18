@@ -10496,21 +10496,19 @@ exports.Headers = global.Headers;
 exports.Request = global.Request;
 exports.Response = global.Response;
 },{}],4:[function(require,module,exports){
+(function (process){
 var RainCheck = require ('./rainCheck.js')
 var OpenWeatherAPI = require ('./openWeatherAPI.js')
 var interface = require ('./interface.js')
+if (process.env.API_KEY) {
+  require('dotenv').config()
+}
 
 api = new OpenWeatherAPI()
 rain = new RainCheck(api)
 
-// console.log('hello')
-//
-//
-// 'http://api.openweathermap.org/data/2.5/forecast?q=london,uk&APPID=58c78eb23a6c145f7916168937c977c6'
-//
-// 'http://api.openweathermap.org/data/2.5/forecast?q=' + location + ',uk&APPID=' + process.env.API_Key
-
-},{"./interface.js":5,"./openWeatherAPI.js":6,"./rainCheck.js":7}],5:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./interface.js":5,"./openWeatherAPI.js":6,"./rainCheck.js":7,"_process":10,"dotenv":1}],5:[function(require,module,exports){
 var $ = require ('jquery')
 
 $( document ).ready(function() {
@@ -10541,7 +10539,6 @@ function OpenWeatherAPI () {
 
 OpenWeatherAPI.prototype.callAPI = function (location) {
   var self = this
-  // fetch('http://api.openweathermap.org/data/2.5/forecast?q=london,uk&APPID=58c78eb23a6c145f7916168937c977c6')
   fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + location + ',uk&APPID=' + process.env.API_KEY)
     .then(data => data.json())
     .then(data => {
