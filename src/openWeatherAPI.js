@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 
-function OpenWeatherAPI () {
+function OpenWeatherAPI (interface) {
+  this.interface = interface
   this.result
 }
 
@@ -17,11 +18,10 @@ OpenWeatherAPI.prototype.callAPI = function (location) {
         )
     })
     .catch(err => console.log(err));
-
-    function returnResults (data, self) {
-      console.log('complete')
-      self.result = data
-    }
+  function returnResults (data, self) {
+    self.result = data
+    self.interface.displayData()
+  }
 }
 
 OpenWeatherAPI.prototype.returnResult = function () {

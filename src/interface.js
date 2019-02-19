@@ -6,12 +6,25 @@ $( document ).ready(function() {
 
   $("#locationSearch").click(function(){
     rain.saveLocation($("#box").val())
-  });
-
-  $("#callAPI").click(function(){
     rain.callAPI()
   });
 
-  $("#main").text("Hello!");
-
 });
+
+function Interface () {
+
+}
+Interface.prototype.displayData = function () {
+  console.log('called')
+  rain.collectData()
+  rain.cleanData()
+  rain.rainOrShine()
+  console.log(rain.result)
+  if (rain.result.includes('Rain')) {
+    $("#main").text("Expecting Rain - bring an umbrella");
+  } else {
+    $("#main").text("No rain - you're all good!");
+  }
+}
+
+module.exports = Interface

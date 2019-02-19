@@ -1,6 +1,7 @@
 var RainCheck = require ('./rainCheck.js')
 var OpenWeatherAPI = require ('./openWeatherAPI.js')
-var interface = require ('./interface.js')
+var Interface = require ('./interface.js')
 
-api = new OpenWeatherAPI()
+interface = new Interface
+api = new OpenWeatherAPI(interface)
 rain = new RainCheck(api)
