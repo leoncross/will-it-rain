@@ -4,8 +4,9 @@ $( document ).ready(function() {
   console.log( 'ready!' );
   $("#main").text("Hello!");
 
-  $("#locationSearch").click(function(){
-    rain.saveLocation($("#box").val())
+  $("#search").click(function(){
+    $("#result").text("Loading...");
+    rain.saveLocation($("#searchBox").val())
     rain.callAPI()
   });
 
@@ -21,9 +22,9 @@ Interface.prototype.displayData = function () {
   rain.rainOrShine()
   console.log(rain.result)
   if (rain.result.includes('Rain')) {
-    $("#main").text("Expecting Rain - bring an umbrella");
+    $("#result").text("Yes! Bring an umbrella!");
   } else {
-    $("#main").text("No rain - you're all good!");
+    $("#result").text("No rain expected! You're good!");
   }
 }
 

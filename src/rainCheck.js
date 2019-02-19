@@ -2,7 +2,6 @@ function RainCheck (weatherAPI) {
   this.weatherAPI = weatherAPI
   this.location
   this.weatherData
-  this.result = []
 }
 
 RainCheck.prototype.kelvinToCelsius = function (number) {
@@ -24,6 +23,7 @@ RainCheck.prototype.collectData = function () {
 }
 
 RainCheck.prototype.cleanData = function () {
+  this.result = []
   for (i = 0; i < 3; i++) {
     this.result.push(this.weatherData['list'][i]['weather'][0]['main'])
   }
