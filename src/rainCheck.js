@@ -2,11 +2,6 @@ function RainCheck (weatherAPI) {
   this.weatherAPI = weatherAPI
 }
 
-RainCheck.prototype.kelvinToCelsius = function (number) {
-  console.log(this.weatherAPI)
-  return number - 273.15
-}
-
 RainCheck.prototype.saveLocation = function (location) {
   this.location = location
   console.log('location: ' + this.location)
@@ -35,6 +30,12 @@ RainCheck.prototype.rainOrShine = function () {
     }
   }
   return counter
+}
+
+// future addition
+RainCheck.prototype.kelvinToCelsius = function (number) {
+  console.log(this.weatherAPI)
+  return number - 273.15
 }
 
 module.exports = RainCheck
