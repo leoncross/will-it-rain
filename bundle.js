@@ -10391,46 +10391,13 @@ exports.Response = global.Response;
 },{}],3:[function(require,module,exports){
 var RainCheck = require ('./rainCheck.js')
 var OpenWeatherAPI = require ('./openWeatherAPI.js')
-var Interface = require ('./interface.js')
+var WeatherInterface = require ('./weatherInterface.js')
 
-interface = new Interface
-api = new OpenWeatherAPI(interface)
+weatherInterface = new WeatherInterface
+api = new OpenWeatherAPI(weatherInterface)
 rain = new RainCheck(api)
 
-},{"./interface.js":4,"./openWeatherAPI.js":5,"./rainCheck.js":6}],4:[function(require,module,exports){
-var $ = require ('jquery')
-
-$( document ).ready(function() {
-  console.log( 'ready!' );
-  $("#main").text("Hello!");
-
-  $("#search").click(function(){
-    $("#result").text("Loading...");
-    rain.saveLocation($("#searchBox").val())
-    rain.callAPI()
-  });
-
-});
-
-function Interface () {
-
-}
-Interface.prototype.displayData = function () {
-  console.log('called')
-  rain.collectData()
-  rain.cleanData()
-  rain.rainOrShine()
-  console.log(rain.result)
-  if (rain.result.includes('Rain')) {
-    $("#result").text("Yes! Bring an umbrella!");
-  } else {
-    $("#result").text("No rain expected! You're good!");
-  }
-}
-
-module.exports = Interface
-
-},{"jquery":1}],5:[function(require,module,exports){
+},{"./openWeatherAPI.js":4,"./rainCheck.js":5,"./weatherInterface.js":6}],4:[function(require,module,exports){
 const fetch = require('node-fetch');
 
 function OpenWeatherAPI (interface) {
@@ -10463,7 +10430,7 @@ OpenWeatherAPI.prototype.returnResult = function () {
 
 module.exports = OpenWeatherAPI
 
-},{"node-fetch":2}],6:[function(require,module,exports){
+},{"node-fetch":2}],5:[function(require,module,exports){
 function RainCheck (weatherAPI) {
   this.weatherAPI = weatherAPI
   this.location
@@ -10507,4 +10474,43 @@ RainCheck.prototype.rainOrShine = function () {
 
 module.exports = RainCheck
 
-},{}]},{},[5,6,4,3]);
+},{}],6:[function(require,module,exports){
+var $ = require ('jquery')
+
+$( document ).ready(function() {
+  console.log( 'ready!' );
+  $("#main").text("Hello!");
+
+  $("#search").click(function(){
+    $("#result").text("Loading...");
+    rain.saveLocation($("#searchBox").val())
+    rain.callAPI()
+  });
+
+});
+
+function Interface () {
+
+}
+Interface.prototype.displayData = function () {
+  try {
+    console.log('API called')
+    rain.collectData()
+    rain.cleanData()
+    rain.rainOrShine()
+    console.log(rain.result)
+    if (rain.result.includes('Rain')) {
+      $("#result").text("Yes! Bring an umbrella!");
+    } else {
+      $("#result").text("No rain expected! You're good!");
+    }
+  }
+  catch(err) {
+    $("#result").text("An error occurred, please try again");
+    console.log("error: " + err)
+  }
+}
+
+module.exports = Interface
+
+},{"jquery":1}]},{},[4,5,6,3]);

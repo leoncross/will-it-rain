@@ -23,7 +23,7 @@
     "coverage": "istanbul cover --include-all-sources jasmine",
     "lint": "npx eslint src;exit 0",
     "jasmine": "jasmine",
-    "bundle": "browserify src/openWeatherAPI.js src/rainCheck.js src/interface.js src/app.js -o bundle.js"
+    "bundle": "browserify src/openWeatherAPI.js src/rainCheck.js src/weatherInterface.js src/app.js -o bundle.js"
   },
   "author": "",
   "license": "ISC",

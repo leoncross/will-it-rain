@@ -1,7 +1,5 @@
 function RainCheck (weatherAPI) {
   this.weatherAPI = weatherAPI
-  this.location
-  this.weatherData
 }
 
 RainCheck.prototype.kelvinToCelsius = function (number) {
@@ -11,7 +9,7 @@ RainCheck.prototype.kelvinToCelsius = function (number) {
 
 RainCheck.prototype.saveLocation = function (location) {
   this.location = location
-  console.log("location: " + this.location)
+  console.log('location: ' + this.location)
 }
 
 RainCheck.prototype.callAPI = function () {
@@ -24,14 +22,14 @@ RainCheck.prototype.collectData = function () {
 
 RainCheck.prototype.cleanData = function () {
   this.result = []
-  for (i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     this.result.push(this.weatherData['list'][i]['weather'][0]['main'])
   }
 }
 
 RainCheck.prototype.rainOrShine = function () {
-  counter = 0
-  for (i = 0; i < this.result.length; i++) {
+  let counter = 0
+  for (let i = 0; i < this.result.length; i++) {
     if (this.result[i] === 'Rain') {
       counter += 1
     }
