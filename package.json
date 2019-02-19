@@ -23,7 +23,8 @@
     "test": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "coverage": "istanbul cover --include-all-sources jasmine",
     "lint": "npx eslint src;exit 0",
-    "jasmine": "jasmine"
+    "jasmine": "jasmine",
+    "bundle": "browserify src/openWeatherAPI.js src/rainCheck.js src/interface.js src/app.js -o bundle.js"
   },
   "author": "",
   "license": "ISC",

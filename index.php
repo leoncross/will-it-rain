@@ -6,9 +6,9 @@
     <link rel="stylesheet" type="text/css" href="./static/stylesheets/style.css">
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
     <script src="bundle.js"></script>
-    <!-- <script src="./src/openWeatherAPI.js"></script>
-    <script src="./src/rainCheck.js"></script>
-    <script src="./src/interface.js"></script> -->
+    <!-- <script src="./src/openWeatherAPI.js"></script> -->
+    <!-- <script src="./src/rainCheck.js"></script> -->
+    <!-- <script src="./src/interface.js"></script> -->
   </head>
   <body>
     <div id='main'></div>

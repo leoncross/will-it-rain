@@ -1,4 +1,3 @@
-require('dotenv').config()
 const fetch = require('node-fetch');
 
 function OpenWeatherAPI () {
@@ -7,7 +6,7 @@ function OpenWeatherAPI () {
 
 OpenWeatherAPI.prototype.callAPI = function (location) {
   var self = this
-  fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + location + ',uk&APPID=' + process.env.API_KEY)
+  fetch('https://api-handler.herokuapp.com/weather?location=' + location)
     .then(data => data.json())
     .then(data => {
       let promise = new Promise(function(resolve, reject) {
