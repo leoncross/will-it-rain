@@ -29,5 +29,3 @@ OpenWeatherAPI.prototype.returnResult = function () {
 }
 
 module.exports = OpenWeatherAPI
-
-console.log(process.env.API_KEY)
