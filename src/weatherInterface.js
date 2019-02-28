@@ -11,9 +11,8 @@ $(document).ready(function () {
   })
 })
 
-function Interface () {
+function Interface () {}
 
-}
 Interface.prototype.displayData = function () {
   try {
     console.log('API called')
